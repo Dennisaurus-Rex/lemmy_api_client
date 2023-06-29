@@ -13,6 +13,7 @@ import '../query.dart';
 part 'person.freezed.dart';
 part 'person.g.dart';
 
+/// Model to login a user.
 @freezed
 class Login with _$Login implements LemmyApiQuery<LoginResponse> {
   @apiSerde
@@ -33,6 +34,7 @@ class Login with _$Login implements LemmyApiQuery<LoginResponse> {
       LoginResponse.fromJson(json);
 }
 
+/// Model to register a new user.
 @freezed
 class Register with _$Register implements LemmyApiQuery<Jwt> {
   @apiSerde
@@ -60,6 +62,7 @@ class Register with _$Register implements LemmyApiQuery<Jwt> {
   Jwt responseFactory(Map<String, dynamic> json) => Jwt.fromJson(json['jwt']);
 }
 
+/// Model to get a captcha.
 @freezed
 class GetCaptcha with _$GetCaptcha implements LemmyApiQuery<Captcha> {
   @apiSerde
@@ -78,6 +81,7 @@ class GetCaptcha with _$GetCaptcha implements LemmyApiQuery<Captcha> {
       Captcha.fromJson(json['ok']);
 }
 
+/// Model to save user settings.
 @freezed
 class SaveUserSettings with _$SaveUserSettings implements LemmyApiQuery<Jwt> {
   @apiSerde
@@ -85,9 +89,9 @@ class SaveUserSettings with _$SaveUserSettings implements LemmyApiQuery<Jwt> {
     bool? showNsfw,
     String? theme,
     @JsonKey(fromJson: sortTypeFromIndex, toJson: sortTypeToIndex)
-        SortType? defaultSortType,
+    SortType? defaultSortType,
     @JsonKey(fromJson: postListingTypeFromIndex, toJson: postListingTypeToIndex)
-        PostListingType? defaultListingType,
+    PostListingType? defaultListingType,
     String? lang,
     String? avatar,
     String? banner,
@@ -117,6 +121,7 @@ class SaveUserSettings with _$SaveUserSettings implements LemmyApiQuery<Jwt> {
   Jwt responseFactory(Map<String, dynamic> json) => Jwt.fromJson(json['jwt']);
 }
 
+/// Model to change a user's password.
 @freezed
 class ChangePassword with _$ChangePassword implements LemmyApiQuery<Jwt> {
   @apiSerde
@@ -139,6 +144,7 @@ class ChangePassword with _$ChangePassword implements LemmyApiQuery<Jwt> {
   Jwt responseFactory(Map<String, dynamic> json) => Jwt.fromJson(json['jwt']);
 }
 
+/// Model to get a user's details.
 @freezed
 class GetPersonDetails
     with _$GetPersonDetails
@@ -168,6 +174,7 @@ class GetPersonDetails
       FullPersonView.fromJson(json);
 }
 
+/// Model to mark all notifications as read.
 @freezed
 class MarkAllAsRead
     with _$MarkAllAsRead
@@ -192,6 +199,7 @@ class MarkAllAsRead
           .toList();
 }
 
+/// Model to add an admin.
 @freezed
 class AddAdmin with _$AddAdmin implements LemmyApiQuery<List<PersonViewSafe>> {
   @apiSerde
@@ -216,6 +224,7 @@ class AddAdmin with _$AddAdmin implements LemmyApiQuery<List<PersonViewSafe>> {
           .toList();
 }
 
+/// Model to ban a user.
 @freezed
 class BanPerson with _$BanPerson implements LemmyApiQuery<BannedPerson> {
   @apiSerde
@@ -241,6 +250,7 @@ class BanPerson with _$BanPerson implements LemmyApiQuery<BannedPerson> {
       BannedPerson.fromJson(json);
 }
 
+/// Model to get all replies to a user's comments.
 @freezed
 class GetReplies with _$GetReplies implements LemmyApiQuery<List<CommentView>> {
   @apiSerde
@@ -267,6 +277,7 @@ class GetReplies with _$GetReplies implements LemmyApiQuery<List<CommentView>> {
           .toList();
 }
 
+/// Model to get all mentions of a user.
 @freezed
 class GetPersonMentions
     with _$GetPersonMentions
@@ -295,6 +306,7 @@ class GetPersonMentions
           .toList();
 }
 
+/// Model to mark a mention as read.
 @freezed
 class MarkPersonMentionAsRead
     with _$MarkPersonMentionAsRead
@@ -319,6 +331,7 @@ class MarkPersonMentionAsRead
       PersonMentionView.fromJson(json['person_mention_view']);
 }
 
+/// Model to deleta a user's account.
 @freezed
 class DeleteAccount with _$DeleteAccount implements LemmyApiQuery<void> {
   @apiSerde
@@ -339,6 +352,7 @@ class DeleteAccount with _$DeleteAccount implements LemmyApiQuery<void> {
   void responseFactory(Map<String, dynamic> json) {}
 }
 
+/// Model to request a password reset.
 @freezed
 class PasswordReset with _$PasswordReset implements LemmyApiQuery<Null> {
   @apiSerde
@@ -358,6 +372,7 @@ class PasswordReset with _$PasswordReset implements LemmyApiQuery<Null> {
   Null responseFactory(Map<String, dynamic> json) => null;
 }
 
+/// Model to change a user's password.
 @freezed
 class PasswordChange with _$PasswordChange implements LemmyApiQuery<Jwt> {
   @apiSerde
@@ -379,6 +394,7 @@ class PasswordChange with _$PasswordChange implements LemmyApiQuery<Jwt> {
   Jwt responseFactory(Map<String, dynamic> json) => Jwt.fromJson(json['jwt']);
 }
 
+/// Model to create a new private message.
 @freezed
 class CreatePrivateMessage
     with _$CreatePrivateMessage
@@ -403,6 +419,7 @@ class CreatePrivateMessage
       PrivateMessageView.fromJson(json['private_message_view']);
 }
 
+/// Model to edit a private message.
 @freezed
 class EditPrivateMessage
     with _$EditPrivateMessage
@@ -427,6 +444,7 @@ class EditPrivateMessage
       PrivateMessageView.fromJson(json['private_message_view']);
 }
 
+/// Model to delete a private message.
 @freezed
 class DeletePrivateMessage
     with _$DeletePrivateMessage
@@ -451,6 +469,7 @@ class DeletePrivateMessage
       PrivateMessageView.fromJson(json['private_message_view']);
 }
 
+/// Model to mark a private message as read.
 @freezed
 class MarkPrivateMessageAsRead
     with _$MarkPrivateMessageAsRead
@@ -475,6 +494,7 @@ class MarkPrivateMessageAsRead
       PrivateMessageView.fromJson(json['private_message_view']);
 }
 
+/// Model to get private messages.
 @freezed
 class GetPrivateMessages
     with _$GetPrivateMessages
@@ -502,6 +522,7 @@ class GetPrivateMessages
           .toList();
 }
 
+/// Model to block a person.
 @freezed
 class BlockPerson with _$BlockPerson implements LemmyApiQuery<BlockedPerson> {
   @apiSerde
@@ -525,6 +546,7 @@ class BlockPerson with _$BlockPerson implements LemmyApiQuery<BlockedPerson> {
       BlockedPerson.fromJson(json);
 }
 
+/// Model to get a count of unread notifications.
 @freezed
 class GetUnreadCount
     with _$GetUnreadCount
@@ -548,6 +570,7 @@ class GetUnreadCount
       UnreadCount.fromJson(json);
 }
 
+/// Model to get a count of reports.
 @freezed
 class GetReportCount
     with _$GetReportCount
@@ -571,6 +594,7 @@ class GetReportCount
       ReportCount.fromJson(json);
 }
 
+/// Model to get all blocked persons.
 @freezed
 class GetBannedPersons
     with _$GetBannedPersons
@@ -595,6 +619,7 @@ class GetBannedPersons
           .toList();
 }
 
+/// Model to verify an email.
 @freezed
 class VerifyEmail with _$VerifyEmail implements LemmyApiQuery<void> {
   @apiSerde

@@ -11,6 +11,7 @@ import '../query.dart';
 part 'community.freezed.dart';
 part 'community.g.dart';
 
+/// Model to get a community.
 @freezed
 class GetCommunity
     with _$GetCommunity
@@ -36,6 +37,7 @@ class GetCommunity
       FullCommunityView.fromJson(json);
 }
 
+/// Model to create a new community.
 @freezed
 class CreateCommunity
     with _$CreateCommunity
@@ -65,6 +67,7 @@ class CreateCommunity
       CommunityView.fromJson(json['community_view']);
 }
 
+/// Model to list communites.
 @freezed
 class ListCommunities
     with _$ListCommunities
@@ -94,6 +97,7 @@ class ListCommunities
           .toList();
 }
 
+/// Model to ban a user from a community.
 @freezed
 class BanFromCommunity
     with _$BanFromCommunity
@@ -123,6 +127,7 @@ class BanFromCommunity
       BannedCommunityUser.fromJson(json);
 }
 
+/// Model to add a moderator to a community.
 @freezed
 class AddModToCommunity
     with _$AddModToCommunity
@@ -151,6 +156,7 @@ class AddModToCommunity
           .toList();
 }
 
+/// Model to edit a community.
 @freezed
 class EditCommunity
     with _$EditCommunity
@@ -180,6 +186,7 @@ class EditCommunity
       CommunityView.fromJson(json['community_view']);
 }
 
+/// Model to delete a community.
 @freezed
 class DeleteCommunity
     with _$DeleteCommunity
@@ -205,6 +212,7 @@ class DeleteCommunity
       CommunityView.fromJson(json['community_view']);
 }
 
+/// Model to remove a community.
 @freezed
 class RemoveCommunity
     with _$RemoveCommunity
@@ -232,6 +240,7 @@ class RemoveCommunity
       CommunityView.fromJson(json['community_view']);
 }
 
+/// Model to follow a community.
 @freezed
 class FollowCommunity
     with _$FollowCommunity
@@ -257,6 +266,7 @@ class FollowCommunity
       CommunityView.fromJson(json['community_view']);
 }
 
+/// Model to transfer a community.
 @freezed
 class TransferCommunity
     with _$TransferCommunity
@@ -282,6 +292,7 @@ class TransferCommunity
       FullCommunityView.fromJson(json);
 }
 
+/// Model to block a community.
 @freezed
 class BlockCommunity
     with _$BlockCommunity

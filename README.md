@@ -1,21 +1,12 @@
-# ⚠️ THIS PROJECT IS NOT MAINTAINED ANYMORE ⚠️
-
-This project has been officially dropped due to lack of interest and political differences. If anyone is interested in continuing developement, feel free to fork it. For any questions you can message [krawieck](https://matrix.to/#/@krawieck:matrix.org) (who was responsible for the flutter app) or [shilangyu](https://matrix.to/#/@shilangyu:matrix.org) (who was responsible for lemmy_api_client).
+# Lemmy Dart API client
 
 ---
 
-# Lemmy Dart API client
+## History
 
-<div align="center">
+This project was forked from LemmurOrg's [api client](https://github.com/LemmurOrg/lemmy_api_client). Since it wasn't maintained, I decided to fork it, fix some issues and release it as a new package.
 
- <img width=200px height=200px src="https://raw.githubusercontent.com/LemmurOrg/lemmy_api_client/master/logo.svg"/>
-
-[![](https://img.shields.io/pub/v/lemmy_api_client.svg?logo=dart)](https://pub.dev/packages/lemmy_api_client)
-[![](https://github.com/LemmurOrg/lemmy_api_client/workflows/ci/badge.svg)](https://github.com/LemmurOrg/lemmy_api_client/actions)
-
-A Dart client for the [Lemmy API](https://join-lemmy.org/api/)
-
-</div>
+It is a Dart wrapper around the official [Lemmy API](https://join-lemmy.org/api/)
 
 ## Features
 
@@ -29,7 +20,7 @@ A Dart client for the [Lemmy API](https://join-lemmy.org/api/)
 ## Example
 
 ```dart
-import 'package:lemmy_api_client/v3.dart';
+import 'package:lemmy_api/v3.dart';
 
 Future<void> main() async {
   // instantiate your lemmy instance with the host uri
@@ -45,8 +36,6 @@ Future<void> main() async {
   print(messages);
 }
 ```
-
-_check out [Lemmur](https://github.com/LemmurOrg/lemmur), a mobile Lemmy client in Flutter_
 
 ---
 

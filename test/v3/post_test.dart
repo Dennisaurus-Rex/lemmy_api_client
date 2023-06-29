@@ -1,4 +1,4 @@
-import 'package:lemmy_api_client/v3.dart';
+import 'package:lemmy_api/v3.dart';
 import 'package:test/test.dart';
 
 import 'util.dart';

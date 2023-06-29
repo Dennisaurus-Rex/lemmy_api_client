@@ -11,6 +11,7 @@ import '../query.dart';
 part 'comment.freezed.dart';
 part 'comment.g.dart';
 
+/// model to create a new comment on a post.
 @freezed
 class CreateComment
     with _$CreateComment

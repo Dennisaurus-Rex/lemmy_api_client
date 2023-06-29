@@ -1,4 +1,4 @@
-import 'package:lemmy_api_client/v3.dart';
+import 'package:lemmy_api/v3.dart';
 
 Future<void> main() async {
   // instantiate your lemmy instance with the host uri

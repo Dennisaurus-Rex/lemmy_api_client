@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+/// A [JsonConverter] that forces the [DateTime] to be in UTC format when serialized to JSON.
 class ForceUtcDateTime implements JsonConverter<DateTime, String> {
   const ForceUtcDateTime();
 

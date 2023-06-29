@@ -1,4 +1,4 @@
-name: lemmy_api_client_example
+name: lemmy_api_example
 version: 0.0.0
 description: A new Flutter project.
 
@@ -8,5 +8,5 @@ environment:
   sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
-  lemmy_api_client:
+  lemmy_api:
     path: ../

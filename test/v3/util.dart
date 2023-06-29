@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:lemmy_api_client/v3.dart';
+import 'package:lemmy_api/v3.dart';
 import 'package:test/test.dart';
 
 final run = const LemmyApiV3('lemmy.ml').run;
