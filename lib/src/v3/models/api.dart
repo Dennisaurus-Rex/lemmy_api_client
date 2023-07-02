@@ -165,15 +165,15 @@ class Captcha with _$Captcha {
       _$CaptchaFromJson(json);
 }
 
+/// From: https://join-lemmy.org/api/interfaces/GetPersonDetailsResponse.html
 @freezed
 class FullPersonView with _$FullPersonView {
   @modelSerde
   const factory FullPersonView({
-    required PersonViewSafe personView,
-    required List<CommunityModeratorView> moderates,
     required List<CommentView> comments,
+    required List<CommunityModeratorView> moderates,
+    required PersonViewSafe personView,
     required List<PostView> posts,
-    required String instanceHost,
   }) = _FullPersonView;
 
   const FullPersonView._();

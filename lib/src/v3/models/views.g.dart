@@ -10,14 +10,12 @@ _$_PersonViewSafe _$$_PersonViewSafeFromJson(Map<String, dynamic> json) =>
     _$_PersonViewSafe(
       person: PersonSafe.fromJson(json['person'] as Map<String, dynamic>),
       counts: PersonAggregates.fromJson(json['counts'] as Map<String, dynamic>),
-      instanceHost: json['instance_host'] as String,
     );
 
 Map<String, dynamic> _$$_PersonViewSafeToJson(_$_PersonViewSafe instance) =>
     <String, dynamic>{
       'person': instance.person.toJson(),
       'counts': instance.counts.toJson(),
-      'instance_host': instance.instanceHost,
     };
 
 _$_PersonMentionView _$$_PersonMentionViewFromJson(Map<String, dynamic> json) =>
@@ -112,35 +110,35 @@ Map<String, dynamic> _$$_PrivateMessageViewToJson(
     };
 
 _$_PostView _$$_PostViewFromJson(Map<String, dynamic> json) => _$_PostView(
-      post: Post.fromJson(json['post'] as Map<String, dynamic>),
-      creator: PersonSafe.fromJson(json['creator'] as Map<String, dynamic>),
       community:
           CommunitySafe.fromJson(json['community'] as Map<String, dynamic>),
-      creatorBannedFromCommunity: json['creator_banned_from_community'] as bool,
       counts: PostAggregates.fromJson(json['counts'] as Map<String, dynamic>),
-      subscribed: json['subscribed'] as bool,
-      saved: json['saved'] as bool,
-      read: json['read'] as bool,
+      creator: PersonSafe.fromJson(json['creator'] as Map<String, dynamic>),
+      creatorBannedFromCommunity: json['creator_banned_from_community'] as bool,
       creatorBlocked: json['creator_blocked'] as bool,
       myVote: json['my_vote'] == null
           ? null
           : VoteType.fromJson(json['my_vote'] as int),
-      instanceHost: json['instance_host'] as String,
+      post: Post.fromJson(json['post'] as Map<String, dynamic>),
+      read: json['read'] as bool,
+      saved: json['saved'] as bool,
+      subscribed: json['subscribed'] as bool,
+      unreadComments: json['unread_comments'] as int,
     );
 
 Map<String, dynamic> _$$_PostViewToJson(_$_PostView instance) =>
     <String, dynamic>{
-      'post': instance.post.toJson(),
-      'creator': instance.creator.toJson(),
       'community': instance.community.toJson(),
-      'creator_banned_from_community': instance.creatorBannedFromCommunity,
       'counts': instance.counts.toJson(),
-      'subscribed': instance.subscribed,
-      'saved': instance.saved,
-      'read': instance.read,
+      'creator': instance.creator.toJson(),
+      'creator_banned_from_community': instance.creatorBannedFromCommunity,
       'creator_blocked': instance.creatorBlocked,
       'my_vote': instance.myVote?.toJson(),
-      'instance_host': instance.instanceHost,
+      'post': instance.post.toJson(),
+      'read': instance.read,
+      'saved': instance.saved,
+      'subscribed': instance.subscribed,
+      'unread_comments': instance.unreadComments,
     };
 
 _$_PostReportView _$$_PostReportViewFromJson(Map<String, dynamic> json) =>
@@ -181,39 +179,33 @@ Map<String, dynamic> _$$_PostReportViewToJson(_$_PostReportView instance) =>
 _$_CommentView _$$_CommentViewFromJson(Map<String, dynamic> json) =>
     _$_CommentView(
       comment: Comment.fromJson(json['comment'] as Map<String, dynamic>),
-      creator: PersonSafe.fromJson(json['creator'] as Map<String, dynamic>),
-      recipient: json['recipient'] == null
-          ? null
-          : PersonSafe.fromJson(json['recipient'] as Map<String, dynamic>),
-      post: Post.fromJson(json['post'] as Map<String, dynamic>),
       community:
           CommunitySafe.fromJson(json['community'] as Map<String, dynamic>),
       counts:
           CommentAggregates.fromJson(json['counts'] as Map<String, dynamic>),
+      creator: PersonSafe.fromJson(json['creator'] as Map<String, dynamic>),
       creatorBannedFromCommunity: json['creator_banned_from_community'] as bool,
-      subscribed: json['subscribed'] as bool,
-      saved: json['saved'] as bool,
       creatorBlocked: json['creator_blocked'] as bool,
       myVote: json['my_vote'] == null
           ? null
           : VoteType.fromJson(json['my_vote'] as int),
-      instanceHost: json['instance_host'] as String,
+      post: Post.fromJson(json['post'] as Map<String, dynamic>),
+      saved: json['saved'] as bool,
+      subscribed: json['subscribed'] as String,
     );
 
 Map<String, dynamic> _$$_CommentViewToJson(_$_CommentView instance) =>
     <String, dynamic>{
       'comment': instance.comment.toJson(),
-      'creator': instance.creator.toJson(),
-      'recipient': instance.recipient?.toJson(),
-      'post': instance.post.toJson(),
       'community': instance.community.toJson(),
       'counts': instance.counts.toJson(),
+      'creator': instance.creator.toJson(),
       'creator_banned_from_community': instance.creatorBannedFromCommunity,
-      'subscribed': instance.subscribed,
-      'saved': instance.saved,
       'creator_blocked': instance.creatorBlocked,
       'my_vote': instance.myVote?.toJson(),
-      'instance_host': instance.instanceHost,
+      'post': instance.post.toJson(),
+      'saved': instance.saved,
+      'subscribed': instance.subscribed,
     };
 
 _$_CommentReportView _$$_CommentReportViewFromJson(Map<String, dynamic> json) =>
@@ -489,7 +481,6 @@ _$_CommunityModeratorView _$$_CommunityModeratorViewFromJson(
       community:
           CommunitySafe.fromJson(json['community'] as Map<String, dynamic>),
       moderator: PersonSafe.fromJson(json['moderator'] as Map<String, dynamic>),
-      instanceHost: json['instance_host'] as String,
     );
 
 Map<String, dynamic> _$$_CommunityModeratorViewToJson(
@@ -497,7 +488,6 @@ Map<String, dynamic> _$$_CommunityModeratorViewToJson(
     <String, dynamic>{
       'community': instance.community.toJson(),
       'moderator': instance.moderator.toJson(),
-      'instance_host': instance.instanceHost,
     };
 
 _$_PersonBlockView _$$_PersonBlockViewFromJson(Map<String, dynamic> json) =>

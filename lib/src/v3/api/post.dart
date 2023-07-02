@@ -204,7 +204,7 @@ class StickyPost with _$StickyPost implements LemmyApiQuery<PostView> {
   @apiSerde
   const factory StickyPost({
     required int postId,
-    required bool stickied,
+    required bool? stickied,
     required String auth,
   }) = _StickyPost;
 

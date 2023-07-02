@@ -18,7 +18,10 @@ class LemmyApiV3 {
   const LemmyApiV3(this.host);
 
   /// Run a given query
-  Future<T> run<T>(LemmyApiQuery<T> query) async {
+  Future<T> run<T>(
+    LemmyApiQuery<T> query, {
+    void Function(String)? rawBody,
+  }) async {
     // get a future based on http method
     final res = await () {
       switch (query.httpMethod) {
@@ -47,6 +50,8 @@ class LemmyApiV3 {
           );
       }
     }();
+
+    rawBody?.call(res.body);
 
     // if status code is not \in [200; 300) then throw an exception with a correct message
     if (!res.ok) {

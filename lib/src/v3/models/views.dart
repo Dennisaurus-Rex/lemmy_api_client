@@ -14,7 +14,6 @@ class PersonViewSafe with _$PersonViewSafe {
   const factory PersonViewSafe({
     required PersonSafe person,
     required PersonAggregates counts,
-    required String instanceHost,
   }) = _PersonViewSafe;
 
   const PersonViewSafe._();
@@ -90,21 +89,22 @@ class PrivateMessageView with _$PrivateMessageView {
       _$PrivateMessageViewFromJson(json);
 }
 
+/// From: https://join-lemmy.org/api/interfaces/PostView.html
 @freezed
 class PostView with _$PostView {
   @modelSerde
   const factory PostView({
-    required Post post,
-    required PersonSafe creator,
     required CommunitySafe community,
-    required bool creatorBannedFromCommunity,
     required PostAggregates counts,
-    required bool subscribed,
-    required bool saved,
-    required bool read,
+    required PersonSafe creator,
+    required bool creatorBannedFromCommunity,
     required bool creatorBlocked,
     VoteType? myVote,
-    required String instanceHost,
+    required Post post,
+    required bool read,
+    required bool saved,
+    required bool subscribed,
+    required int unreadComments,
   }) = _PostView;
 
   const PostView._();
@@ -133,22 +133,21 @@ class PostReportView with _$PostReportView {
       _$PostReportViewFromJson(json);
 }
 
+/// From: https://join-lemmy.org/api/interfaces/CommentView.html
 @freezed
 class CommentView with _$CommentView {
   @modelSerde
   const factory CommentView({
     required Comment comment,
-    required PersonSafe creator,
-    PersonSafe? recipient,
-    required Post post,
     required CommunitySafe community,
     required CommentAggregates counts,
+    required PersonSafe creator,
     required bool creatorBannedFromCommunity,
-    required bool subscribed,
-    required bool saved,
     required bool creatorBlocked,
     VoteType? myVote,
-    required String instanceHost,
+    required Post post,
+    required bool saved,
+    required String subscribed,
   }) = _CommentView;
 
   const CommentView._();
@@ -351,13 +350,13 @@ class CommunityFollowerView with _$CommunityFollowerView {
       _$CommunityFollowerViewFromJson(json);
 }
 
+/// From: https://join-lemmy.org/api/interfaces/CommunityModeratorView.html
 @freezed
 class CommunityModeratorView with _$CommunityModeratorView {
   @modelSerde
   const factory CommunityModeratorView({
     required CommunitySafe community,
     required PersonSafe moderator,
-    required String instanceHost,
   }) = _CommunityModeratorView;
 
   const CommunityModeratorView._();

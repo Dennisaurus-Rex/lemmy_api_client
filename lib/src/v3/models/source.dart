@@ -8,6 +8,7 @@ import '../../utils/workaround_settings_index.dart';
 part 'source.freezed.dart';
 part 'source.g.dart';
 
+/// From: https://join-lemmy.org/api/interfaces/Person.html
 @freezed
 class PersonSafe with _$PersonSafe {
   @modelSerde
@@ -24,13 +25,11 @@ class PersonSafe with _$PersonSafe {
     required bool local,
     String? banner,
     required bool deleted,
-    required String inboxUrl,
-    required String sharedInboxUrl,
     String? matrixUserId,
     required bool admin,
     required bool botAccount,
     DateTime? banExpires,
-    required String instanceHost,
+    required int instanceId,
   }) = _PersonSafe;
 
   const PersonSafe._();
@@ -48,9 +47,9 @@ class LocalUserSettings with _$LocalUserSettings {
     required bool showNsfw,
     required String theme,
     @JsonKey(fromJson: sortTypeFromIndex, toJson: sortTypeToIndex)
-        required SortType defaultSortType,
+    required SortType defaultSortType,
     @JsonKey(fromJson: postListingTypeFromIndex, toJson: postListingTypeToIndex)
-        required PostListingType defaultListingType,
+    required PostListingType defaultListingType,
     required String lang,
     required bool showAvatars,
     required bool showScores,
@@ -145,30 +144,32 @@ class PostReport with _$PostReport {
       _$PostReportFromJson(json);
 }
 
+/// From: https://join-lemmy.org/api/interfaces/Post.html
 @freezed
 class Post with _$Post {
   @modelSerde
   const factory Post({
-    required int id,
-    required String name,
-    String? url,
-    String? body,
-    required int creatorId,
-    required int communityId,
-    required bool removed,
-    required bool locked,
-    required DateTime published,
-    DateTime? updated,
-    required bool deleted,
-    required bool nsfw,
-    required bool stickied,
-    String? embedTitle,
-    String? embedDescription,
-    String? embedHtml,
-    String? thumbnailUrl,
     required String apId,
+    String? body,
+    required int communityId,
+    required int creatorId,
+    required bool deleted,
+    String? embedDescription,
+    String? embedTitle,
+    String? embedVideoUrl,
+    required bool featuredCommunity,
+    required bool featuredLocal,
+    required int id,
+    required int languageId,
     required bool local,
-    required String instanceHost,
+    required bool locked,
+    required String name,
+    required bool nsfw,
+    required DateTime published,
+    required bool removed,
+    String? thumbnailUrl,
+    DateTime? updated,
+    String? url,
   }) = _Post;
 
   const Post._();
@@ -370,6 +371,7 @@ class ModAdd with _$ModAdd {
   factory ModAdd.fromJson(Map<String, dynamic> json) => _$ModAddFromJson(json);
 }
 
+/// From: https://join-lemmy.org/api/interfaces/Community.html
 @freezed
 class CommunitySafe with _$CommunitySafe {
   @modelSerde
@@ -387,7 +389,9 @@ class CommunitySafe with _$CommunitySafe {
     required bool local,
     String? icon,
     String? banner,
-    required String instanceHost,
+    required bool hidden,
+    required int instanceId,
+    required bool postingRestrictedToMods,
   }) = _CommunitySafe;
 
   const CommunitySafe._();
@@ -416,6 +420,7 @@ class CommentReport with _$CommentReport {
       _$CommentReportFromJson(json);
 }
 
+/// From: https://join-lemmy.org/api/interfaces/Comment.html
 @freezed
 class Comment with _$Comment {
   @modelSerde
@@ -423,16 +428,16 @@ class Comment with _$Comment {
     required int id,
     required int creatorId,
     required int postId,
-    int? parentId,
     required String content,
     required bool removed,
-    required bool read,
     required DateTime published,
     DateTime? updated,
     required bool deleted,
     required String apId,
     required bool local,
     required String instanceHost,
+    required int languageId,
+    required bool distinguished,
   }) = _Comment;
 
   const Comment._();

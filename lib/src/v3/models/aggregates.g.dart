@@ -56,30 +56,40 @@ Map<String, dynamic> _$$_SiteAggregatesToJson(_$_SiteAggregates instance) =>
 
 _$_PostAggregates _$$_PostAggregatesFromJson(Map<String, dynamic> json) =>
     _$_PostAggregates(
-      id: json['id'] as int,
-      postId: json['post_id'] as int,
       comments: json['comments'] as int,
-      score: json['score'] as int,
-      upvotes: json['upvotes'] as int,
       downvotes: json['downvotes'] as int,
+      featuredCommunity: json['featured_community'] as bool,
+      featuredLocal: json['featured_local'] as bool,
+      hotRank: json['hot_rank'] as int,
+      hotRankActive: json['hot_rank_active'] as int,
+      id: json['id'] as int,
       newestCommentTime: const ForceUtcDateTime()
           .fromJson(json['newest_comment_time'] as String),
       newestCommentTimeNecro: const ForceUtcDateTime()
           .fromJson(json['newest_comment_time_necro'] as String),
+      postId: json['post_id'] as int,
+      published: json['published'] as String,
+      score: json['score'] as int,
+      upvotes: json['upvotes'] as int,
     );
 
 Map<String, dynamic> _$$_PostAggregatesToJson(_$_PostAggregates instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'post_id': instance.postId,
       'comments': instance.comments,
-      'score': instance.score,
-      'upvotes': instance.upvotes,
       'downvotes': instance.downvotes,
+      'featured_community': instance.featuredCommunity,
+      'featured_local': instance.featuredLocal,
+      'hot_rank': instance.hotRank,
+      'hot_rank_active': instance.hotRankActive,
+      'id': instance.id,
       'newest_comment_time':
           const ForceUtcDateTime().toJson(instance.newestCommentTime),
       'newest_comment_time_necro':
           const ForceUtcDateTime().toJson(instance.newestCommentTimeNecro),
+      'post_id': instance.postId,
+      'published': instance.published,
+      'score': instance.score,
+      'upvotes': instance.upvotes,
     };
 
 _$_CommunityAggregates _$$_CommunityAggregatesFromJson(
@@ -112,19 +122,25 @@ Map<String, dynamic> _$$_CommunityAggregatesToJson(
 
 _$_CommentAggregates _$$_CommentAggregatesFromJson(Map<String, dynamic> json) =>
     _$_CommentAggregates(
-      id: json['id'] as int,
+      childCount: json['child_count'] as int,
       commentId: json['comment_id'] as int,
+      downvotes: json['downvotes'] as int,
+      hotRank: json['hot_rank'] as int,
+      id: json['id'] as int,
+      published: json['published'] as String,
       score: json['score'] as int,
       upvotes: json['upvotes'] as int,
-      downvotes: json['downvotes'] as int,
     );
 
 Map<String, dynamic> _$$_CommentAggregatesToJson(
         _$_CommentAggregates instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      'child_count': instance.childCount,
       'comment_id': instance.commentId,
+      'downvotes': instance.downvotes,
+      'hot_rank': instance.hotRank,
+      'id': instance.id,
+      'published': instance.published,
       'score': instance.score,
       'upvotes': instance.upvotes,
-      'downvotes': instance.downvotes,
     };

@@ -259,28 +259,26 @@ Map<String, dynamic> _$$_CaptchaToJson(_$_Captcha instance) =>
 
 _$_FullPersonView _$$_FullPersonViewFromJson(Map<String, dynamic> json) =>
     _$_FullPersonView(
-      personView:
-          PersonViewSafe.fromJson(json['person_view'] as Map<String, dynamic>),
+      comments: (json['comments'] as List<dynamic>)
+          .map((e) => CommentView.fromJson(e as Map<String, dynamic>))
+          .toList(),
       moderates: (json['moderates'] as List<dynamic>)
           .map(
               (e) => CommunityModeratorView.fromJson(e as Map<String, dynamic>))
           .toList(),
-      comments: (json['comments'] as List<dynamic>)
-          .map((e) => CommentView.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      personView:
+          PersonViewSafe.fromJson(json['person_view'] as Map<String, dynamic>),
       posts: (json['posts'] as List<dynamic>)
           .map((e) => PostView.fromJson(e as Map<String, dynamic>))
           .toList(),
-      instanceHost: json['instance_host'] as String,
     );
 
 Map<String, dynamic> _$$_FullPersonViewToJson(_$_FullPersonView instance) =>
     <String, dynamic>{
-      'person_view': instance.personView.toJson(),
-      'moderates': instance.moderates.map((e) => e.toJson()).toList(),
       'comments': instance.comments.map((e) => e.toJson()).toList(),
+      'moderates': instance.moderates.map((e) => e.toJson()).toList(),
+      'person_view': instance.personView.toJson(),
       'posts': instance.posts.map((e) => e.toJson()).toList(),
-      'instance_host': instance.instanceHost,
     };
 
 _$_BannedCommunityUser _$$_BannedCommunityUserFromJson(

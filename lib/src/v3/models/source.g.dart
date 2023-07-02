@@ -21,14 +21,12 @@ _$_PersonSafe _$$_PersonSafeFromJson(Map<String, dynamic> json) =>
       local: json['local'] as bool,
       banner: json['banner'] as String?,
       deleted: json['deleted'] as bool,
-      inboxUrl: json['inbox_url'] as String,
-      sharedInboxUrl: json['shared_inbox_url'] as String,
       matrixUserId: json['matrix_user_id'] as String?,
       admin: json['admin'] as bool,
       botAccount: json['bot_account'] as bool,
       banExpires: _$JsonConverterFromJson<String, DateTime>(
           json['ban_expires'], const ForceUtcDateTime().fromJson),
-      instanceHost: json['instance_host'] as String,
+      instanceId: json['instance_id'] as int,
     );
 
 Map<String, dynamic> _$$_PersonSafeToJson(_$_PersonSafe instance) =>
@@ -46,14 +44,12 @@ Map<String, dynamic> _$$_PersonSafeToJson(_$_PersonSafe instance) =>
       'local': instance.local,
       'banner': instance.banner,
       'deleted': instance.deleted,
-      'inbox_url': instance.inboxUrl,
-      'shared_inbox_url': instance.sharedInboxUrl,
       'matrix_user_id': instance.matrixUserId,
       'admin': instance.admin,
       'bot_account': instance.botAccount,
       'ban_expires': _$JsonConverterToJson<String, DateTime>(
           instance.banExpires, const ForceUtcDateTime().toJson),
-      'instance_host': instance.instanceHost,
+      'instance_id': instance.instanceId,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(
@@ -232,51 +228,53 @@ Map<String, dynamic> _$$_PostReportToJson(_$_PostReport instance) =>
     };
 
 _$_Post _$$_PostFromJson(Map<String, dynamic> json) => _$_Post(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      url: json['url'] as String?,
+      apId: json['ap_id'] as String,
       body: json['body'] as String?,
-      creatorId: json['creator_id'] as int,
       communityId: json['community_id'] as int,
-      removed: json['removed'] as bool,
+      creatorId: json['creator_id'] as int,
+      deleted: json['deleted'] as bool,
+      embedDescription: json['embed_description'] as String?,
+      embedTitle: json['embed_title'] as String?,
+      embedVideoUrl: json['embed_video_url'] as String?,
+      featuredCommunity: json['featured_community'] as bool,
+      featuredLocal: json['featured_local'] as bool,
+      id: json['id'] as int,
+      languageId: json['language_id'] as int,
+      local: json['local'] as bool,
       locked: json['locked'] as bool,
+      name: json['name'] as String,
+      nsfw: json['nsfw'] as bool,
       published: const ForceUtcDateTime().fromJson(json['published'] as String),
+      removed: json['removed'] as bool,
+      thumbnailUrl: json['thumbnail_url'] as String?,
       updated: _$JsonConverterFromJson<String, DateTime>(
           json['updated'], const ForceUtcDateTime().fromJson),
-      deleted: json['deleted'] as bool,
-      nsfw: json['nsfw'] as bool,
-      stickied: json['stickied'] as bool,
-      embedTitle: json['embed_title'] as String?,
-      embedDescription: json['embed_description'] as String?,
-      embedHtml: json['embed_html'] as String?,
-      thumbnailUrl: json['thumbnail_url'] as String?,
-      apId: json['ap_id'] as String,
-      local: json['local'] as bool,
-      instanceHost: json['instance_host'] as String,
+      url: json['url'] as String?,
     );
 
 Map<String, dynamic> _$$_PostToJson(_$_Post instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'url': instance.url,
+      'ap_id': instance.apId,
       'body': instance.body,
-      'creator_id': instance.creatorId,
       'community_id': instance.communityId,
-      'removed': instance.removed,
+      'creator_id': instance.creatorId,
+      'deleted': instance.deleted,
+      'embed_description': instance.embedDescription,
+      'embed_title': instance.embedTitle,
+      'embed_video_url': instance.embedVideoUrl,
+      'featured_community': instance.featuredCommunity,
+      'featured_local': instance.featuredLocal,
+      'id': instance.id,
+      'language_id': instance.languageId,
+      'local': instance.local,
       'locked': instance.locked,
+      'name': instance.name,
+      'nsfw': instance.nsfw,
       'published': const ForceUtcDateTime().toJson(instance.published),
+      'removed': instance.removed,
+      'thumbnail_url': instance.thumbnailUrl,
       'updated': _$JsonConverterToJson<String, DateTime>(
           instance.updated, const ForceUtcDateTime().toJson),
-      'deleted': instance.deleted,
-      'nsfw': instance.nsfw,
-      'stickied': instance.stickied,
-      'embed_title': instance.embedTitle,
-      'embed_description': instance.embedDescription,
-      'embed_html': instance.embedHtml,
-      'thumbnail_url': instance.thumbnailUrl,
-      'ap_id': instance.apId,
-      'local': instance.local,
-      'instance_host': instance.instanceHost,
+      'url': instance.url,
     };
 
 _$_PasswordResetRequest _$$_PasswordResetRequestFromJson(
@@ -545,7 +543,9 @@ _$_CommunitySafe _$$_CommunitySafeFromJson(Map<String, dynamic> json) =>
       local: json['local'] as bool,
       icon: json['icon'] as String?,
       banner: json['banner'] as String?,
-      instanceHost: json['instance_host'] as String,
+      hidden: json['hidden'] as bool,
+      instanceId: json['instance_id'] as int,
+      postingRestrictedToMods: json['posting_restricted_to_mods'] as bool,
     );
 
 Map<String, dynamic> _$$_CommunitySafeToJson(_$_CommunitySafe instance) =>
@@ -564,7 +564,9 @@ Map<String, dynamic> _$$_CommunitySafeToJson(_$_CommunitySafe instance) =>
       'local': instance.local,
       'icon': instance.icon,
       'banner': instance.banner,
-      'instance_host': instance.instanceHost,
+      'hidden': instance.hidden,
+      'instance_id': instance.instanceId,
+      'posting_restricted_to_mods': instance.postingRestrictedToMods,
     };
 
 _$_CommentReport _$$_CommentReportFromJson(Map<String, dynamic> json) =>
@@ -601,10 +603,8 @@ _$_Comment _$$_CommentFromJson(Map<String, dynamic> json) => _$_Comment(
       id: json['id'] as int,
       creatorId: json['creator_id'] as int,
       postId: json['post_id'] as int,
-      parentId: json['parent_id'] as int?,
       content: json['content'] as String,
       removed: json['removed'] as bool,
-      read: json['read'] as bool,
       published: const ForceUtcDateTime().fromJson(json['published'] as String),
       updated: _$JsonConverterFromJson<String, DateTime>(
           json['updated'], const ForceUtcDateTime().fromJson),
@@ -612,6 +612,8 @@ _$_Comment _$$_CommentFromJson(Map<String, dynamic> json) => _$_Comment(
       apId: json['ap_id'] as String,
       local: json['local'] as bool,
       instanceHost: json['instance_host'] as String,
+      languageId: json['language_id'] as int,
+      distinguished: json['distinguished'] as bool,
     );
 
 Map<String, dynamic> _$$_CommentToJson(_$_Comment instance) =>
@@ -619,10 +621,8 @@ Map<String, dynamic> _$$_CommentToJson(_$_Comment instance) =>
       'id': instance.id,
       'creator_id': instance.creatorId,
       'post_id': instance.postId,
-      'parent_id': instance.parentId,
       'content': instance.content,
       'removed': instance.removed,
-      'read': instance.read,
       'published': const ForceUtcDateTime().toJson(instance.published),
       'updated': _$JsonConverterToJson<String, DateTime>(
           instance.updated, const ForceUtcDateTime().toJson),
@@ -630,6 +630,8 @@ Map<String, dynamic> _$$_CommentToJson(_$_Comment instance) =>
       'ap_id': instance.apId,
       'local': instance.local,
       'instance_host': instance.instanceHost,
+      'language_id': instance.languageId,
+      'distinguished': instance.distinguished,
     };
 
 _$_PersonMention _$$_PersonMentionFromJson(Map<String, dynamic> json) =>

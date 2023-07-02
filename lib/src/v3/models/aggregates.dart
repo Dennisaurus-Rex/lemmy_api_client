@@ -6,6 +6,7 @@ import '../../utils/serde.dart';
 part 'aggregates.freezed.dart';
 part 'aggregates.g.dart';
 
+/// From: https://join-lemmy.org/api/interfaces/PersonAggregates.html
 @freezed
 class PersonAggregates with _$PersonAggregates {
   @modelSerde
@@ -44,18 +45,24 @@ class SiteAggregates with _$SiteAggregates {
       _$SiteAggregatesFromJson(json);
 }
 
+/// From: https://join-lemmy.org/api/interfaces/PostAggregates.html
 @freezed
 class PostAggregates with _$PostAggregates {
   @modelSerde
   const factory PostAggregates({
-    required int id,
-    required int postId,
     required int comments,
-    required int score,
-    required int upvotes,
     required int downvotes,
+    required bool featuredCommunity,
+    required bool featuredLocal,
+    required int hotRank,
+    required int hotRankActive,
+    required int id,
     required DateTime newestCommentTime,
     required DateTime newestCommentTimeNecro,
+    required int postId,
+    required String published,
+    required int score,
+    required int upvotes,
   }) = _PostAggregates;
 
   const PostAggregates._();
@@ -83,15 +90,19 @@ class CommunityAggregates with _$CommunityAggregates {
       _$CommunityAggregatesFromJson(json);
 }
 
+/// From: https://join-lemmy.org/api/interfaces/CommentAggregates.html
 @freezed
 class CommentAggregates with _$CommentAggregates {
   @modelSerde
   const factory CommentAggregates({
-    required int id,
+    required int childCount,
     required int commentId,
+    required int downvotes,
+    required int hotRank,
+    required int id,
+    required String published,
     required int score,
     required int upvotes,
-    required int downvotes,
   }) = _CommentAggregates;
 
   const CommentAggregates._();

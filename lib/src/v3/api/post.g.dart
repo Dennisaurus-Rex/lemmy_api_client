@@ -189,16 +189,25 @@ Map<String, dynamic> _$$_LockPostToJson(_$_LockPost instance) =>
 _$_StickyPost _$$_StickyPostFromJson(Map<String, dynamic> json) =>
     _$_StickyPost(
       postId: json['post_id'] as int,
-      stickied: json['stickied'] as bool,
+      stickied: json['stickied'] as bool?,
       auth: json['auth'] as String,
     );
 
-Map<String, dynamic> _$$_StickyPostToJson(_$_StickyPost instance) =>
-    <String, dynamic>{
-      'post_id': instance.postId,
-      'stickied': instance.stickied,
-      'auth': instance.auth,
-    };
+Map<String, dynamic> _$$_StickyPostToJson(_$_StickyPost instance) {
+  final val = <String, dynamic>{
+    'post_id': instance.postId,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('stickied', instance.stickied);
+  val['auth'] = instance.auth;
+  return val;
+}
 
 _$_SavePost _$$_SavePostFromJson(Map<String, dynamic> json) => _$_SavePost(
       postId: json['post_id'] as int,
